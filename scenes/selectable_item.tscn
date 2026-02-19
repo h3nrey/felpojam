@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dw7ah20d87vvs"]
+
+[ext_resource type="Script" uid="uid://dwgxxar5tbroj" path="res://scripts/selectable_item.gd" id="1_ylmv4"]
+
+[node name="SelectableItem" type="Button" unique_id=994269227]
+script = ExtResource("1_ylmv4")
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]

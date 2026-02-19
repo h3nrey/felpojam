@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Client" format=3 uid="uid://doalvhuk6lkom"]
+
+[ext_resource type="Script" uid="uid://ds13i6bkdrpg6" path="res://scripts/Client.gd" id="1_g2ao6"]
+[ext_resource type="Texture2D" uid="uid://bsfkdi7aid67f" path="res://assets/characters/cuphead.webp" id="2_u67q6"]
+
+[resource]
+script = ExtResource("1_g2ao6")
+name = "Carlos"
+sprite_texture = ExtResource("2_u67q6")
+type = "paradise"
+service = "death"
+metadata/_custom_type_script = "uid://ds13i6bkdrpg6"

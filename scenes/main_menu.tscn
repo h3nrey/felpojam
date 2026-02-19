@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://c1akbu6fhtfm4"]
+
+[node name="MainMenu" type="Node2D" unique_id=1869741525]
+
+[node name="Label" type="Label" parent="." unique_id=1573223405]
+offset_left = 333.0
+offset_top = 183.0
+offset_right = 762.0
+offset_bottom = 238.0
+theme_override_font_sizes/font_size = 40
+text = "Funcionario Fantasma"
+
+[node name="Button" type="Button" parent="." unique_id=1597509403]
+offset_left = 558.0
+offset_top = 397.0
+offset_right = 678.0
+offset_bottom = 453.0
+theme_override_font_sizes/font_size = 24
+text = "Jogar"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Day" format=3 uid="uid://br236rmqjd3nv"]
+
+[ext_resource type="Script" uid="uid://ds13i6bkdrpg6" path="res://scripts/Client.gd" id="1_nxp3s"]
+[ext_resource type="Script" uid="uid://dk1q2p6hlycce" path="res://scripts/Day.gd" id="2_60jut"]
+[ext_resource type="Resource" uid="uid://doalvhuk6lkom" path="res://resources/Clients/client_04.tres" id="2_pq7ai"]
+[ext_resource type="Resource" uid="uid://bio8yjv25kgdm" path="res://resources/Clients/client_03.tres" id="3_rwtgt"]
+[ext_resource type="Resource" uid="uid://lqibsfuuc6gf" path="res://resources/Clients/client_02.tres" id="4_ibsxd"]
+
+[resource]
+script = ExtResource("2_60jut")
+name = "dia 2"
+clients = Array[ExtResource("1_nxp3s")]([ExtResource("2_pq7ai"), ExtResource("3_rwtgt"), ExtResource("4_ibsxd"), ExtResource("2_pq7ai")])
+metadata/_custom_type_script = "uid://dk1q2p6hlycce"

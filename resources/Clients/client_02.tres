@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Client" format=3 uid="uid://lqibsfuuc6gf"]
+
+[ext_resource type="Script" uid="uid://ds13i6bkdrpg6" path="res://scripts/Client.gd" id="1_5wlyw"]
+[ext_resource type="Texture2D" uid="uid://0qarq0a1bbe2" path="res://assets/characters/king_dice.png" id="2_p287s"]
+
+[resource]
+script = ExtResource("1_5wlyw")
+name = "João"
+sprite_texture = ExtResource("2_p287s")
+type = "hell"
+service = "inheritance"
+metadata/_custom_type_script = "uid://ds13i6bkdrpg6"

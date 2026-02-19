@@ -1,0 +1,119 @@
+[gd_scene format=3 uid="uid://cnpmwnqfmfy61"]
+
+[ext_resource type="PackedScene" uid="uid://dw7ah20d87vvs" path="res://scenes/selectable_item.tscn" id="1_pw63i"]
+[ext_resource type="PackedScene" uid="uid://cq47a8rhcuf0n" path="res://scenes/player_controller.tscn" id="1_w2twt"]
+[ext_resource type="Texture2D" uid="uid://0qarq0a1bbe2" path="res://assets/characters/king_dice.png" id="3_pu3yx"]
+[ext_resource type="Texture2D" uid="uid://bsfkdi7aid67f" path="res://assets/characters/cuphead.webp" id="4_gubc5"]
+
+[node name="MainScene" type="Node2D" unique_id=1848251699]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=177951176]
+position = Vector2(541, 200)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1826455908]
+layer = 10
+
+[node name="hellButton" parent="CanvasLayer" unique_id=994269227 instance=ExtResource("1_pw63i")]
+offset_left = 11.0
+offset_top = 18.0
+offset_right = 19.0
+offset_bottom = 26.0
+item = "client_type"
+value = "hell"
+
+[node name="paradiseButton" parent="CanvasLayer" unique_id=1816040081 instance=ExtResource("1_pw63i")]
+offset_left = 13.0
+offset_top = 55.0
+offset_right = 21.0
+offset_bottom = 63.0
+item = "client_type"
+value = "paradise"
+
+[node name="deathCertificate" parent="CanvasLayer" unique_id=1219739542 instance=ExtResource("1_pw63i")]
+offset_left = 20.0
+offset_top = 186.0
+offset_right = 28.0
+offset_bottom = 194.0
+item = "service"
+value = "death"
+
+[node name="marriageCertificate" parent="CanvasLayer" unique_id=1679468344 instance=ExtResource("1_pw63i")]
+offset_left = 20.0
+offset_top = 146.0
+offset_right = 28.0
+offset_bottom = 154.0
+item = "service"
+value = "marriage"
+
+[node name="inheritanceCertificate" parent="CanvasLayer" unique_id=2095929445 instance=ExtResource("1_pw63i")]
+offset_left = 20.0
+offset_top = 100.0
+offset_right = 28.0
+offset_bottom = 108.0
+item = "service"
+value = "inheritance"
+
+[node name="inheritanceStamp" parent="CanvasLayer" unique_id=1000429273 instance=ExtResource("1_pw63i")]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -4.0
+offset_right = 8.0
+offset_bottom = 4.0
+grow_vertical = 2
+item = "stamp"
+value = "inheritance"
+
+[node name="marriageStamp" parent="CanvasLayer" unique_id=925409001 instance=ExtResource("1_pw63i")]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -4.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 2
+item = "stamp"
+value = "marriage"
+
+[node name="deathStamp" parent="CanvasLayer" unique_id=1837222155 instance=ExtResource("1_pw63i")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+item = "stamp"
+value = "death"
+
+[node name="stampButton" type="Button" parent="CanvasLayer" unique_id=1466171738]
+offset_left = 878.0
+offset_top = 460.0
+offset_right = 1092.0
+offset_bottom = 556.0
+theme_override_font_sizes/font_size = 32
+text = "Carimbar"
+
+[node name="curr_client" type="Label" parent="CanvasLayer" unique_id=1562261801]
+offset_left = 550.0
+offset_top = 134.0
+offset_right = 590.0
+offset_bottom = 157.0
+
+[node name="curr_state" type="Label" parent="CanvasLayer" unique_id=1256823983]
+offset_left = 568.0
+offset_top = 465.0
+offset_right = 608.0
+offset_bottom = 488.0
+
+[node name="PlayerController" parent="." unique_id=11431370 instance=ExtResource("1_w2twt")]
+CLIENT_SPRITES = Array[Texture2D]([ExtResource("3_pu3yx"), ExtResource("4_gubc5")])
+
+[connection signal="button_down" from="CanvasLayer/stampButton" to="PlayerController" method="_on_stamp_button_button_down"]
