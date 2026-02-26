@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://ds5ovltl8jj7n"]
+
+[ext_resource type="Script" uid="uid://mtlnxh27jkv3" path="res://scripts/global/document_database.gd" id="1_k0d1u"]
+[ext_resource type="Texture2D" uid="uid://dm0qic588v8vu" path="res://assets/ui/icons/documents/hell_death.png" id="2_7lk68"]
+[ext_resource type="Texture2D" uid="uid://lxbs5xjudv5a" path="res://assets/ui/icons/documents/hell_marriage.png" id="3_uxsda"]
+[ext_resource type="Texture2D" uid="uid://fd7cvp1f0qer" path="res://assets/ui/icons/documents/hell_inheritance.png" id="4_mkv7d"]
+[ext_resource type="Texture2D" uid="uid://bbc1r765wqemf" path="res://assets/ui/icons/documents/paradise_death.png" id="5_wpk0e"]
+[ext_resource type="Texture2D" uid="uid://cnour076qghf5" path="res://assets/ui/icons/documents/paradise_marriage.png" id="6_2yp45"]
+[ext_resource type="Texture2D" uid="uid://dkyxn8bux6wqy" path="res://assets/ui/icons/documents/paradise_inheritance.png" id="7_83f46"]
+[ext_resource type="Texture2D" uid="uid://bjtybfn5bkkd" path="res://assets/ui/heart.png" id="8_e2v5l"]
+
+[node name="DocumentDatabase" type="Node2D" unique_id=1110058096]
+script = ExtResource("1_k0d1u")
+hell_death = ExtResource("2_7lk68")
+hell_marriage = ExtResource("3_uxsda")
+hell_inheritance = ExtResource("4_mkv7d")
+paradise_death = ExtResource("5_wpk0e")
+paradise_marriage = ExtResource("6_2yp45")
+paradise_inheritance = ExtResource("7_83f46")
+stamped_overlay = ExtResource("8_e2v5l")

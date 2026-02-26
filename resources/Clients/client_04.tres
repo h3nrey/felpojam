@@ -1,7 +1,9 @@
 [gd_resource type="Resource" script_class="Client" format=3 uid="uid://doalvhuk6lkom"]
 
 [ext_resource type="Script" uid="uid://ds13i6bkdrpg6" path="res://scripts/Client.gd" id="1_g2ao6"]
+[ext_resource type="Texture2D" uid="uid://bcy7jcp42h2hi" path="res://assets/ui/icons/skull.png" id="2_hkgy6"]
 [ext_resource type="Texture2D" uid="uid://bsfkdi7aid67f" path="res://assets/characters/cuphead.webp" id="2_u67q6"]
+[ext_resource type="Texture2D" uid="uid://bjulun4x88ktj" path="res://assets/ui/icons/angel.png" id="4_ic6o4"]
 
 [resource]
 script = ExtResource("1_g2ao6")
@@ -9,4 +11,7 @@ name = "Carlos"
 sprite_texture = ExtResource("2_u67q6")
 type = "paradise"
 service = "death"
+patience_duration = 90
+type_texture = ExtResource("4_ic6o4")
+service_texture = ExtResource("2_hkgy6")
 metadata/_custom_type_script = "uid://ds13i6bkdrpg6"

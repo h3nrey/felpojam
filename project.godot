@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="ducxels-felpojam"
+run/main_scene="uid://cnpmwnqfmfy61"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -18,6 +19,10 @@ config/icon="res://icon.svg"
 
 SelectItem="*uid://bludksv4wu0sx"
 Types="*uid://cc0y4cvp02536"
+EventBus="*uid://748dk2tieqly"
+DocumentDatabase="*uid://ds5ovltl8jj7n"
+1'DragLayer="*res://scripts/global/drag_layer.gd"
+AudioManager="*res://scenes/audio_manager.tscn"
 
 [global_group]
 

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dimhs6ikqifa6"]
+
+[ext_resource type="Script" uid="uid://n2ywri7e5coa" path="res://scripts/utils/DragableItem.gd" id="1_ldlei"]
+[ext_resource type="Texture2D" uid="uid://c7cqju1emdyl" path="res://assets/paper.png" id="2_vas6c"]
+
+[node name="Paper" type="Control" unique_id=54838569]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ldlei")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1651354013]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 84.979706
+texture = ExtResource("2_vas6c")
+expand_mode = 5
+stretch_mode = 4

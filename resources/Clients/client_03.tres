@@ -1,7 +1,9 @@
 [gd_resource type="Resource" script_class="Client" format=3 uid="uid://bio8yjv25kgdm"]
 
 [ext_resource type="Script" uid="uid://ds13i6bkdrpg6" path="res://scripts/Client.gd" id="1_iq14j"]
+[ext_resource type="Texture2D" uid="uid://bcy7jcp42h2hi" path="res://assets/ui/icons/skull.png" id="2_anmgc"]
 [ext_resource type="Texture2D" uid="uid://cbcxfn8f1x7aw" path="res://assets/characters/chalice.png" id="2_mxuvd"]
+[ext_resource type="Texture2D" uid="uid://bjulun4x88ktj" path="res://assets/ui/icons/angel.png" id="4_ae33c"]
 
 [resource]
 script = ExtResource("1_iq14j")
@@ -9,4 +11,7 @@ name = "Justine"
 sprite_texture = ExtResource("2_mxuvd")
 type = "paradise"
 service = "death"
+patience_duration = 90
+type_texture = ExtResource("4_ae33c")
+service_texture = ExtResource("2_anmgc")
 metadata/_custom_type_script = "uid://ds13i6bkdrpg6"

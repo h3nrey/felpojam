@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dp8w3g67xk1sf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_popup"]
+bg_color = Color(0.95, 0.95, 0.95, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_left = 20
+corner_radius_bottom_right = 20
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 15.0
+
+[node name="ServicePopup" type="PanelContainer"]
+visible = false
+offset_right = 250.0
+offset_bottom = 120.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_popup")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ServicesContainer" type="HBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="ServiceLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.2, 0.6, 1)
+theme_override_font_sizes/font_size = 18
+horizontal_alignment = 1

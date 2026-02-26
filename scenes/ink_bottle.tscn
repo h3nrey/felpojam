@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://cffgi3tyb4yfn"]
+
+[ext_resource type="Script" uid="uid://cdhhush4sj2hh" path="res://scripts/ink_bottle.gd" id="1_ink"]
+[ext_resource type="Texture2D" uid="uid://bkynhlgmkxuyq" path="res://assets/ink_bottle.png" id="2_fjmvv"]
+[ext_resource type="Texture2D" uid="uid://spwlkf0yobtu" path="res://assets/ui/progress_bar/bellow.png" id="2_prog_under"]
+[ext_resource type="Texture2D" uid="uid://w0r250hg4fj2" path="res://assets/ui/progress_bar/top.png" id="3_prog_over"]
+[ext_resource type="Texture2D" uid="uid://bjdtrtenm4geh" path="res://assets/ui/progress_bar/progress.png" id="4_prog"]
+
+[node name="InkBottle" type="Control" unique_id=679036059]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 64.0
+offset_bottom = 64.0
+script = ExtResource("1_ink")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1612611453]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_fjmvv")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="ProgressBar" type="TextureProgressBar" parent="." unique_id=895313011]
+visible = false
+layout_mode = 0
+offset_top = 64.0
+offset_right = 64.0
+offset_bottom = 80.0
+texture_under = ExtResource("2_prog_under")
+texture_over = ExtResource("3_prog_over")
+texture_progress = ExtResource("4_prog")
+
+[node name="StampSlot" type="Control" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = -48.0
+offset_right = 56.0
+offset_bottom = 0.0

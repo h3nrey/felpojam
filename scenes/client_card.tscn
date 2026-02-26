@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://dpag4livtkm45"]
+
+[ext_resource type="Texture2D" uid="uid://spwlkf0yobtu" path="res://assets/ui/progress_bar/bellow.png" id="1_ch7fc"]
+[ext_resource type="Script" uid="uid://cpg6gst681j0y" path="res://scripts/client_card_ui_controller.gd" id="1_t5n7w"]
+[ext_resource type="Texture2D" uid="uid://rqfflbi8qwm" path="res://assets/ui/icons/devil.png" id="2_iru01"]
+[ext_resource type="Texture2D" uid="uid://w0r250hg4fj2" path="res://assets/ui/progress_bar/top.png" id="2_t5n7w"]
+[ext_resource type="Texture2D" uid="uid://bjdtrtenm4geh" path="res://assets/ui/progress_bar/progress.png" id="3_8xvxy"]
+[ext_resource type="Texture2D" uid="uid://5ra2v30n3ube" path="res://assets/ui/icons/money.png" id="3_vkgx5"]
+[ext_resource type="Texture2D" uid="uid://b5mywt4n40od7" path="res://assets/square.png" id="4_iru01"]
+[ext_resource type="Texture2D" uid="uid://bjulun4x88ktj" path="res://assets/ui/icons/angel.png" id="5_vkgx5"]
+[ext_resource type="Texture2D" uid="uid://bs15w53hutchf" path="res://assets/ui/icons/ring.png" id="6_l8sc5"]
+[ext_resource type="Texture2D" uid="uid://bcy7jcp42h2hi" path="res://assets/ui/icons/skull.png" id="6_vkgx5"]
+
+[node name="SceneCard" type="VBoxContainer" unique_id=1870070890]
+size_flags_horizontal = 3
+script = ExtResource("1_t5n7w")
+type_icons = Dictionary[String, Texture2D]({
+"hell": ExtResource("2_iru01"),
+"paradise": ExtResource("5_vkgx5")
+})
+service_icons = Dictionary[String, Texture2D]({
+"death": ExtResource("6_vkgx5"),
+"inheritance": ExtResource("3_vkgx5"),
+"marriage": ExtResource("6_l8sc5")
+})
+
+[node name="progress_bar" type="TextureProgressBar" parent="." unique_id=2012208705]
+layout_mode = 2
+max_value = 0.0
+texture_under = ExtResource("1_ch7fc")
+texture_over = ExtResource("2_t5n7w")
+texture_progress = ExtResource("3_8xvxy")
+
+[node name="icons_container" type="HBoxContainer" parent="." unique_id=1267020967]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="icon_container" type="TextureRect" parent="icons_container" unique_id=57999043]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("4_iru01")
+
+[node name="icon" type="TextureRect" parent="icons_container/icon_container" unique_id=517078669]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_vkgx5")
+
+[node name="icon_container2" type="TextureRect" parent="icons_container" unique_id=1678543695]
+layout_mode = 2
+texture = ExtResource("4_iru01")
+
+[node name="icon" type="TextureRect" parent="icons_container/icon_container2" unique_id=1932876544]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("6_l8sc5")

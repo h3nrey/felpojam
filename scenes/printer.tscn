@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://cdru8op2dkwwx"]
+
+[ext_resource type="Texture2D" uid="uid://ot636l6ixfhf" path="res://assets/printer.png" id="1_4lrxx"]
+[ext_resource type="Script" uid="uid://b5thejmg2eu4x" path="res://scripts/machines/printer_controller.gd" id="1_jf8il"]
+[ext_resource type="Texture2D" uid="uid://b5mywt4n40od7" path="res://assets/square.png" id="3_mu7cj"]
+[ext_resource type="Texture2D" uid="uid://spwlkf0yobtu" path="res://assets/ui/progress_bar/bellow.png" id="4_jyu6j"]
+[ext_resource type="Texture2D" uid="uid://w0r250hg4fj2" path="res://assets/ui/progress_bar/top.png" id="5_v3a1h"]
+[ext_resource type="Texture2D" uid="uid://bjdtrtenm4geh" path="res://assets/ui/progress_bar/progress.png" id="6_egoh1"]
+[ext_resource type="Texture2D" uid="uid://cvtvg122k5dj7" path="res://assets/ui/icons/check.png" id="7_v3a1h"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mu7cj"]
+
+[node name="Printer" type="Control" unique_id=482215309]
+layout_mode = 3
+anchor_right = 0.17600001
+anchor_bottom = 0.24700001
+offset_right = -202.75201
+offset_bottom = -160.056
+script = ExtResource("1_jf8il")
+
+[node name="texture" type="TextureRect" parent="." unique_id=655873601]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 200.0
+texture = ExtResource("1_4lrxx")
+expand_mode = 1
+stretch_mode = 4
+flip_h = true
+
+[node name="Panel" type="Panel" parent="." unique_id=582560546]
+layout_mode = 0
+offset_top = -50.0
+offset_right = 200.0
+offset_bottom = 50.0
+
+[node name="IconsContainer" type="HBoxContainer" parent="Panel" unique_id=1127420847]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 26.0
+offset_top = 6.0
+offset_right = -30.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="PaperPanel" type="Panel" parent="Panel/IconsContainer" unique_id=1087606278]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_mu7cj")
+
+[node name="icon" type="TextureRect" parent="Panel/IconsContainer/PaperPanel" unique_id=1561690728]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("3_mu7cj")
+
+[node name="ServicePanel" type="Panel" parent="Panel/IconsContainer" unique_id=1375027879]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="icon" type="TextureRect" parent="Panel/IconsContainer/ServicePanel" unique_id=324206371]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("3_mu7cj")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Panel" unique_id=1537840309]
+visible = false
+layout_mode = 0
+offset_left = -1.9999999
+offset_top = 24.999998
+offset_right = 254.0
+offset_bottom = 89.0
+scale = Vector2(0.8, 0.8)
+texture_under = ExtResource("4_jyu6j")
+texture_over = ExtResource("5_v3a1h")
+texture_progress = ExtResource("6_egoh1")
+
+[node name="markedIcon" type="TextureRect" parent="Panel" unique_id=1317513158]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 19.0
+offset_right = 132.0
+offset_bottom = 83.0
+texture = ExtResource("7_v3a1h")

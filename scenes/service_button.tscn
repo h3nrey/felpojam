@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://c7xk2naf5ghrt"]
+
+[ext_resource type="Script" uid="uid://cf1yltfp32rnx" path="res://scripts/service_drag_item.gd" id="1_drag"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_circle"]
+bg_color = Color(0.85, 0.78, 0.68, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[node name="ServiceButton" type="Control" unique_id=793546234]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_drag")
+
+[node name="Background" type="Panel" parent="." unique_id=1600155121]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_circle")
+
+[node name="Icon" type="TextureRect" parent="." unique_id=877072391]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5

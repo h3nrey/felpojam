@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://c8b0qn0w4x6yn"]
+
+[ext_resource type="Script" uid="uid://bg378npdgoohl" path="res://scripts/stamp_item.gd" id="1_stamp"]
+[ext_resource type="Texture2D" path="res://assets/stamp.png" id="2_d4wel"]
+
+[node name="Stamp" type="Control" unique_id=821594772]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 64.0
+offset_bottom = 64.0
+script = ExtResource("1_stamp")
+item_type = 3
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=4339683]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_d4wel")
+expand_mode = 1
+stretch_mode = 4

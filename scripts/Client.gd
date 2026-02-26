@@ -5,4 +5,6 @@ class_name Client
 @export var sprite_texture: Texture2D
 @export var type: String
 @export var service: String
-@export var waitTime: int
+@export var patience_duration: int
+@export var type_texture: Texture2D
+@export var service_texture: Texture2D

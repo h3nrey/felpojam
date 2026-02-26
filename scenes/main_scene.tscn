@@ -1,16 +1,61 @@
 [gd_scene format=3 uid="uid://cnpmwnqfmfy61"]
 
-[ext_resource type="PackedScene" uid="uid://dw7ah20d87vvs" path="res://scenes/selectable_item.tscn" id="1_pw63i"]
+[ext_resource type="Texture2D" uid="uid://5hdm577k42qw" path="res://assets/background.png" id="1_k6f3i"]
 [ext_resource type="PackedScene" uid="uid://cq47a8rhcuf0n" path="res://scenes/player_controller.tscn" id="1_w2twt"]
 [ext_resource type="Texture2D" uid="uid://bjtybfn5bkkd" path="res://assets/ui/heart.png" id="3_gubc5"]
 [ext_resource type="Script" uid="uid://btj4cdr4f856c" path="res://scripts/lives_ui_controller.gd" id="3_rt2n2"]
 [ext_resource type="Texture2D" uid="uid://bsfkdi7aid67f" path="res://assets/characters/cuphead.webp" id="4_gubc5"]
 [ext_resource type="Script" uid="uid://bw3rcgqpus1xj" path="res://scripts/queue_ui_container.gd" id="5_c16ls"]
 [ext_resource type="Script" uid="uid://jo7n4x7ovs2e" path="res://scripts/end_of_the_day_ui_controller.gd" id="6_18nlu"]
+[ext_resource type="PackedScene" uid="uid://c8b0qn0w4x6yn" path="res://scenes/stamp.tscn" id="6_adb74"]
+[ext_resource type="PackedScene" uid="uid://cffgi3tyb4yfn" path="res://scenes/ink_bottle.tscn" id="6_pgk25"]
+[ext_resource type="Texture2D" uid="uid://roivftm8lfk5" path="res://assets/stamps/stamp_divorce.png" id="7_6p3nn"]
 [ext_resource type="Script" uid="uid://dwcilw508s0y5" path="res://scripts/game_over_ui_controller.gd" id="7_e1cbu"]
+[ext_resource type="Texture2D" uid="uid://bkynhlgmkxuyq" path="res://assets/ink_bottle.png" id="7_kkokr"]
+[ext_resource type="Texture2D" uid="uid://s85146csn3lt" path="res://assets/stamps/stamp_divorce_bordered.png" id="8_k67gn"]
+[ext_resource type="Texture2D" uid="uid://dqrw5cwdbibn8" path="res://assets/ink_bottle_bordered.png" id="8_lhwp2"]
+[ext_resource type="Texture2D" uid="uid://bj4os5rmqfmto" path="res://assets/stamps/stamp_inheritance.png" id="9_k3g67"]
+[ext_resource type="Texture2D" uid="uid://cmn1b0jbjln0s" path="res://assets/stamps/stamp_inheritance_bordered.png" id="10_4bgka"]
+[ext_resource type="Texture2D" uid="uid://bx5k8ohwpy6cw" path="res://assets/stamps/stamp.png" id="11_k3g67"]
 [ext_resource type="Script" uid="uid://dk1q2p6hlycce" path="res://scripts/Day.gd" id="11_mngbo"]
+[ext_resource type="Texture2D" uid="uid://un3ekhnwn2ks" path="res://assets/stamps/stamp_ressurection_bordered.png" id="12_4bgka"]
 [ext_resource type="Resource" uid="uid://ct0eiyj3my7so" path="res://resources/Days/day_01.tres" id="12_4w45t"]
+[ext_resource type="PackedScene" uid="uid://dpag4livtkm45" path="res://scenes/client_card.tscn" id="12_mngbo"]
 [ext_resource type="Resource" uid="uid://br236rmqjd3nv" path="res://resources/Days/day_02.tres" id="13_4w45t"]
+[ext_resource type="Texture2D" uid="uid://rqfflbi8qwm" path="res://assets/ui/icons/devil.png" id="14_01n6w"]
+[ext_resource type="PackedScene" uid="uid://dimhs6ikqifa6" path="res://scenes/paper.tscn" id="14_r6p65"]
+[ext_resource type="PackedScene" uid="uid://cdru8op2dkwwx" path="res://scenes/printer.tscn" id="14_si52b"]
+[ext_resource type="Texture2D" uid="uid://bjulun4x88ktj" path="res://assets/ui/icons/angel.png" id="15_01n6w"]
+[ext_resource type="Texture2D" uid="uid://5ra2v30n3ube" path="res://assets/ui/icons/money.png" id="15_6u1mn"]
+[ext_resource type="Texture2D" uid="uid://bs15w53hutchf" path="res://assets/ui/icons/ring.png" id="16_bcnxi"]
+[ext_resource type="PackedScene" uid="uid://b88xmhgh44mft" path="res://scenes/document_item.tscn" id="16_xdqt8"]
+[ext_resource type="Texture2D" uid="uid://b5mywt4n40od7" path="res://assets/square.png" id="19_k6f3i"]
+[ext_resource type="Script" uid="uid://ckcei4s5rkpb8" path="res://scripts/utils/DragableSlot.gd" id="20_xdqt8"]
+[ext_resource type="Texture2D" uid="uid://t4ayt6pddib2" path="res://assets/computer.png" id="25_kkokr"]
+[ext_resource type="Script" uid="uid://vhd6dsxtlfpf" path="res://scripts/computer_controller.gd" id="26_comp"]
+[ext_resource type="Texture2D" uid="uid://bcy7jcp42h2hi" path="res://assets/ui/icons/skull.png" id="27_skull"]
+[ext_resource type="PackedScene" uid="uid://dp8w3g67xk1sf" path="res://scenes/service_popup.tscn" id="28_popup"]
+[ext_resource type="Texture2D" uid="uid://be1lsndogh405" path="res://assets/computer_bordered.png" id="29_onjth"]
+[ext_resource type="PackedScene" uid="uid://c7xk2naf5ghrt" path="res://scenes/service_button.tscn" id="29_svcbtn"]
+
+[sub_resource type="Gradient" id="Gradient_7nt27"]
+offsets = PackedFloat32Array(0.0073891627, 1)
+colors = PackedColorArray(0.34117648, 0.34117648, 0.34117648, 1, 0.34108615, 0.34108615, 0.34108615, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_k6f3i"]
+gradient = SubResource("Gradient_7nt27")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xdqt8"]
+texture = SubResource("GradientTexture1D_k6f3i")
+
+[sub_resource type="Gradient" id="Gradient_adb74"]
+colors = PackedColorArray(0.34117648, 0.34117648, 0.34117648, 1, 0.34117648, 0.34117648, 0.34117648, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_58gk3"]
+gradient = SubResource("Gradient_adb74")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_to7gp"]
+texture = SubResource("GradientTexture1D_58gk3")
 
 [sub_resource type="Gradient" id="Gradient_c1pb6"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -18,19 +63,41 @@ colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_6wevv"]
 gradient = SubResource("Gradient_c1pb6")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_adb74"]
+texture = ExtResource("19_k6f3i")
+
+[sub_resource type="Gradient" id="Gradient_k6f3i"]
+offsets = PackedFloat32Array(0, 0.9855967)
+colors = PackedColorArray(0.8392157, 0, 0, 1, 0.8392157, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xdqt8"]
+gradient = SubResource("Gradient_k6f3i")
+fill_to = Vector2(1, 0.008547009)
+
 [sub_resource type="CanvasTexture" id="CanvasTexture_mngbo"]
 specular_color = Color(0, 0, 0, 1)
 
 [node name="MainScene" type="Node2D" unique_id=1848251699]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=177951176]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1826455908]
+layer = 10
+
+[node name="Background" type="TextureRect" parent="CanvasLayer" unique_id=64276313]
+z_index = -10
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_k6f3i")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer" unique_id=177951176]
 position = Vector2(432, 268)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("4_gubc5")
 region_rect = Rect2(598.4558, 843.01685, 57.307617, 952.7388)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1826455908]
-layer = 10
 
 [node name="stampButton" type="Button" parent="CanvasLayer" unique_id=1466171738]
 offset_left = 863.0
@@ -39,74 +106,6 @@ offset_right = 1077.0
 offset_bottom = 392.0
 theme_override_font_sizes/font_size = 32
 text = "Carimbar"
-
-[node name="hell_paradise_container" type="HBoxContainer" parent="CanvasLayer" unique_id=1095433038]
-offset_left = 936.0
-offset_top = 473.0
-offset_right = 1112.0
-offset_bottom = 577.0
-
-[node name="hellButton" parent="CanvasLayer/hell_paradise_container" unique_id=994269227 instance=ExtResource("1_pw63i")]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Hell"
-item = "client_type"
-value = "hell"
-
-[node name="paradiseButton" parent="CanvasLayer/hell_paradise_container" unique_id=1816040081 instance=ExtResource("1_pw63i")]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Paradise"
-item = "client_type"
-value = "paradise"
-
-[node name="stamp_container" type="HBoxContainer" parent="CanvasLayer" unique_id=192998051]
-offset_left = 391.0
-offset_top = 314.0
-offset_right = 620.0
-offset_bottom = 354.0
-
-[node name="deathStamp" parent="CanvasLayer/stamp_container" unique_id=1837222155 instance=ExtResource("1_pw63i")]
-layout_mode = 2
-text = "Óbito"
-item = "stamp"
-value = "death"
-
-[node name="inheritanceStamp" parent="CanvasLayer/stamp_container" unique_id=1000429273 instance=ExtResource("1_pw63i")]
-layout_mode = 2
-text = "Herança"
-item = "stamp"
-value = "inheritance"
-
-[node name="marriageStamp" parent="CanvasLayer/stamp_container" unique_id=925409001 instance=ExtResource("1_pw63i")]
-layout_mode = 2
-text = "Casamento"
-item = "stamp"
-value = "marriage"
-
-[node name="service_container" type="HBoxContainer" parent="CanvasLayer" unique_id=1807949324]
-offset_left = 111.0
-offset_top = 312.0
-offset_right = 182.0
-offset_bottom = 352.0
-
-[node name="deathCertificate" parent="CanvasLayer/service_container" unique_id=1219739542 instance=ExtResource("1_pw63i")]
-layout_mode = 2
-text = "M"
-item = "service"
-value = "death"
-
-[node name="marriageCertificate" parent="CanvasLayer/service_container" unique_id=1679468344 instance=ExtResource("1_pw63i")]
-layout_mode = 2
-text = "C"
-item = "service"
-value = "marriage"
-
-[node name="inheritanceCertificate" parent="CanvasLayer/service_container" unique_id=2095929445 instance=ExtResource("1_pw63i")]
-layout_mode = 2
-text = "H"
-item = "service"
-value = "inheritance"
 
 [node name="curr_client" type="Label" parent="CanvasLayer" unique_id=1562261801]
 offset_left = 659.0
@@ -119,6 +118,86 @@ offset_left = 568.0
 offset_top = 465.0
 offset_right = 608.0
 offset_bottom = 488.0
+
+[node name="Paper" parent="CanvasLayer" unique_id=54838569 instance=ExtResource("14_r6p65")]
+offset_left = 763.0
+offset_top = 478.0
+offset_right = 763.0
+offset_bottom = 478.0
+item_value = 0
+icon = ExtResource("14_01n6w")
+
+[node name="Paper2" parent="CanvasLayer" unique_id=1913873533 instance=ExtResource("14_r6p65")]
+offset_left = 878.0
+offset_top = 467.0
+offset_right = 878.0
+offset_bottom = 467.0
+item_value = 1
+icon = ExtResource("15_01n6w")
+
+[node name="InkBottle" parent="CanvasLayer" unique_id=2087198345 instance=ExtResource("6_pgk25")]
+offset_left = 713.0
+offset_top = 385.0
+offset_right = 792.0
+offset_bottom = 464.0
+normal_texture = ExtResource("7_kkokr")
+hover_texture = ExtResource("8_lhwp2")
+
+[node name="StampContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=1858772762]
+offset_left = 465.0
+offset_top = 387.0
+offset_right = 665.0
+offset_bottom = 451.0
+
+[node name="DeathStamp" parent="CanvasLayer/StampContainer" unique_id=821594772 instance=ExtResource("6_adb74")]
+layout_mode = 2
+service_type = 1
+normal_texture = ExtResource("7_6p3nn")
+hover_texture = ExtResource("8_k67gn")
+
+[node name="DivorceStamp" parent="CanvasLayer/StampContainer" unique_id=1582316723 instance=ExtResource("6_adb74")]
+layout_mode = 2
+normal_texture = ExtResource("9_k3g67")
+hover_texture = ExtResource("10_4bgka")
+
+[node name="InheritanceStamp" parent="CanvasLayer/StampContainer" unique_id=1667755909 instance=ExtResource("6_adb74")]
+layout_mode = 2
+normal_texture = ExtResource("11_k3g67")
+hover_texture = ExtResource("12_4bgka")
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=861798473]
+offset_left = 236.0
+offset_top = 373.0
+offset_right = 308.0
+offset_bottom = 439.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_xdqt8")
+
+[node name="Service" parent="CanvasLayer/Panel" unique_id=358545664 instance=ExtResource("14_r6p65")]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -6.0
+offset_right = 1.0
+offset_bottom = -6.0
+item_type = 1
+item_value = 2
+icon = ExtResource("15_6u1mn")
+
+[node name="Panel2" type="Panel" parent="CanvasLayer" unique_id=945707411]
+offset_left = 312.0
+offset_top = 370.0
+offset_right = 385.0
+offset_bottom = 440.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_to7gp")
+
+[node name="Service2" parent="CanvasLayer/Panel2" unique_id=2058960991 instance=ExtResource("14_r6p65")]
+layout_mode = 0
+offset_left = -6.0
+offset_top = -5.0
+offset_right = -6.0
+offset_bottom = -5.0
+item_type = 1
+item_value = 1
+icon = ExtResource("16_bcnxi")
 
 [node name="lives_container" type="HBoxContainer" parent="CanvasLayer" unique_id=778038727]
 offset_left = 1042.0
@@ -140,13 +219,14 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="queue_container" type="HBoxContainer" parent="CanvasLayer" unique_id=841522360]
-offset_left = 78.0
-offset_top = 100.0
-offset_right = 118.0
-offset_bottom = 140.0
+offset_left = 17.0
+offset_top = 11.0
+offset_right = 78.0
+offset_bottom = 66.0
 script = ExtResource("5_c16ls")
 
 [node name="Label" type="Label" parent="CanvasLayer/queue_container" unique_id=898531392]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "1/3"
@@ -195,6 +275,53 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Próximo dia"
 
+[node name="TablePanel" type="Panel" parent="CanvasLayer" unique_id=785484300]
+offset_left = 395.0
+offset_top = 486.0
+offset_right = 689.0
+offset_bottom = 609.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_adb74")
+
+[node name="DragableSlot2" type="Control" parent="CanvasLayer/TablePanel" unique_id=762117792]
+layout_mode = 1
+anchor_top = 0.059000004
+anchor_right = 0.47500002
+anchor_bottom = 0.92700005
+offset_left = 17.0
+offset_top = 6.7429996
+offset_right = -12.650009
+offset_bottom = -0.021003723
+script = ExtResource("20_xdqt8")
+accepted_type = 2
+metadata/_custom_type_script = "uid://ckcei4s5rkpb8"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TablePanel/DragableSlot2" unique_id=927634521]
+layout_mode = 0
+offset_left = -13.0
+offset_top = -10.0
+offset_right = 125.0
+offset_bottom = 107.0
+texture = SubResource("GradientTexture2D_xdqt8")
+
+[node name="DragableSlot3" type="Control" parent="CanvasLayer/TablePanel" unique_id=1869071804]
+anchors_preset = 0
+offset_left = 153.0
+offset_top = 14.0
+offset_right = 263.0
+offset_bottom = 114.0
+script = ExtResource("20_xdqt8")
+accepted_type = 2
+metadata/_custom_type_script = "uid://ckcei4s5rkpb8"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TablePanel/DragableSlot3" unique_id=2004344843]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.218
+anchor_bottom = 1.0500001
+offset_top = -9.0
+offset_right = 0.019989014
+texture = SubResource("GradientTexture2D_xdqt8")
+
 [node name="gameOverPanel" type="TextureRect" parent="CanvasLayer" unique_id=1637963848]
 visible = false
 offset_left = 269.0
@@ -222,8 +349,48 @@ offset_right = 368.0
 offset_bottom = 358.0
 text = "Tentar novamente"
 
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=2015713460]
+offset_right = 759.0
+offset_bottom = 127.0
+
+[node name="Computer" type="Control" parent="CanvasLayer" unique_id=1044818123]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 199.0
+offset_top = 426.0
+offset_right = 403.0
+offset_bottom = 610.0
+script = ExtResource("26_comp")
+popup_scene = ExtResource("28_popup")
+service_button_scene = ExtResource("29_svcbtn")
+death_icon = ExtResource("27_skull")
+marriage_icon = ExtResource("16_bcnxi")
+inheritance_icon = ExtResource("15_6u1mn")
+hover_texture = ExtResource("29_onjth")
+normal_texture = ExtResource("25_kkokr")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Computer" unique_id=212700271]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.088
+anchor_bottom = 0.841
+offset_right = 0.04798889
+offset_bottom = 9.255997
+texture = ExtResource("25_kkokr")
+expand_mode = 1
+stretch_mode = 4
+flip_h = true
+
+[node name="Printer" parent="CanvasLayer" unique_id=482215309 instance=ExtResource("14_si52b")]
+offset_left = 49.0
+offset_top = 473.0
+offset_right = 49.0
+offset_bottom = 473.00003
+document_scene = ExtResource("16_xdqt8")
+
 [node name="PlayerController" parent="." unique_id=11431370 instance=ExtResource("1_w2twt")]
 DAYS = Array[ExtResource("11_mngbo")]([ExtResource("12_4w45t"), ExtResource("13_4w45t")])
+client_card_scene = ExtResource("12_mngbo")
 
 [connection signal="button_down" from="CanvasLayer/stampButton" to="PlayerController" method="_on_stamp_button_button_down"]
 [connection signal="button_down" from="CanvasLayer/endOfTheDay/buttons_container/quit_button" to="CanvasLayer/endOfTheDay" method="_on_quit_button_button_down"]

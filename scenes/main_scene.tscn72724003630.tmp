@@ -1,0 +1,313 @@
+[gd_scene format=3 uid="uid://cnpmwnqfmfy61"]
+
+[ext_resource type="PackedScene" uid="uid://dw7ah20d87vvs" path="res://scenes/selectable_item.tscn" id="1_pw63i"]
+[ext_resource type="PackedScene" uid="uid://cq47a8rhcuf0n" path="res://scenes/player_controller.tscn" id="1_w2twt"]
+[ext_resource type="Texture2D" uid="uid://bjtybfn5bkkd" path="res://assets/ui/heart.png" id="3_gubc5"]
+[ext_resource type="Script" uid="uid://btj4cdr4f856c" path="res://scripts/lives_ui_controller.gd" id="3_rt2n2"]
+[ext_resource type="Texture2D" uid="uid://bsfkdi7aid67f" path="res://assets/characters/cuphead.webp" id="4_gubc5"]
+[ext_resource type="Script" uid="uid://bw3rcgqpus1xj" path="res://scripts/queue_ui_container.gd" id="5_c16ls"]
+[ext_resource type="Script" uid="uid://jo7n4x7ovs2e" path="res://scripts/end_of_the_day_ui_controller.gd" id="6_18nlu"]
+[ext_resource type="Script" uid="uid://dwcilw508s0y5" path="res://scripts/game_over_ui_controller.gd" id="7_e1cbu"]
+[ext_resource type="Script" uid="uid://dk1q2p6hlycce" path="res://scripts/Day.gd" id="11_mngbo"]
+[ext_resource type="Resource" uid="uid://ct0eiyj3my7so" path="res://resources/Days/day_01.tres" id="12_4w45t"]
+[ext_resource type="PackedScene" uid="uid://dpag4livtkm45" path="res://scenes/client_card.tscn" id="12_mngbo"]
+[ext_resource type="Resource" uid="uid://br236rmqjd3nv" path="res://resources/Days/day_02.tres" id="13_4w45t"]
+[ext_resource type="Texture2D" uid="uid://rqfflbi8qwm" path="res://assets/ui/icons/devil.png" id="14_01n6w"]
+[ext_resource type="PackedScene" uid="uid://dimhs6ikqifa6" path="res://scenes/paper.tscn" id="14_r6p65"]
+[ext_resource type="PackedScene" uid="uid://cdru8op2dkwwx" path="res://scenes/printer.tscn" id="14_si52b"]
+[ext_resource type="Texture2D" uid="uid://bjulun4x88ktj" path="res://assets/ui/icons/angel.png" id="15_01n6w"]
+[ext_resource type="Texture2D" uid="uid://5ra2v30n3ube" path="res://assets/ui/icons/money.png" id="15_6u1mn"]
+[ext_resource type="Texture2D" uid="uid://bs15w53hutchf" path="res://assets/ui/icons/ring.png" id="16_bcnxi"]
+[ext_resource type="Texture2D" uid="uid://b5mywt4n40od7" path="res://assets/square.png" id="19_k6f3i"]
+[ext_resource type="Script" uid="uid://ckcei4s5rkpb8" path="res://scripts/utils/DragableSlot.gd" id="20_xdqt8"]
+
+[sub_resource type="Gradient" id="Gradient_c1pb6"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6wevv"]
+gradient = SubResource("Gradient_c1pb6")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_mngbo"]
+specular_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_adb74"]
+texture = ExtResource("19_k6f3i")
+
+[node name="MainScene" type="Node2D" unique_id=1848251699]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=177951176]
+position = Vector2(432, 268)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_gubc5")
+region_rect = Rect2(598.4558, 843.01685, 57.307617, 952.7388)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1826455908]
+layer = 10
+
+[node name="stampButton" type="Button" parent="CanvasLayer" unique_id=1466171738]
+offset_left = 863.0
+offset_top = 296.0
+offset_right = 1077.0
+offset_bottom = 392.0
+theme_override_font_sizes/font_size = 32
+text = "Carimbar"
+
+[node name="hell_paradise_container" type="HBoxContainer" parent="CanvasLayer" unique_id=1095433038]
+offset_left = 936.0
+offset_top = 473.0
+offset_right = 1112.0
+offset_bottom = 577.0
+
+[node name="hellButton" parent="CanvasLayer/hell_paradise_container" unique_id=994269227 instance=ExtResource("1_pw63i")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Hell"
+item = "client_type"
+value = "hell"
+
+[node name="paradiseButton" parent="CanvasLayer/hell_paradise_container" unique_id=1816040081 instance=ExtResource("1_pw63i")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Paradise"
+item = "client_type"
+value = "paradise"
+
+[node name="stamp_container" type="HBoxContainer" parent="CanvasLayer" unique_id=192998051]
+offset_left = 391.0
+offset_top = 314.0
+offset_right = 620.0
+offset_bottom = 354.0
+
+[node name="deathStamp" parent="CanvasLayer/stamp_container" unique_id=1837222155 instance=ExtResource("1_pw63i")]
+layout_mode = 2
+text = "Óbito"
+item = "stamp"
+value = "death"
+
+[node name="inheritanceStamp" parent="CanvasLayer/stamp_container" unique_id=1000429273 instance=ExtResource("1_pw63i")]
+layout_mode = 2
+text = "Herança"
+item = "stamp"
+value = "inheritance"
+
+[node name="marriageStamp" parent="CanvasLayer/stamp_container" unique_id=925409001 instance=ExtResource("1_pw63i")]
+layout_mode = 2
+text = "Casamento"
+item = "stamp"
+value = "marriage"
+
+[node name="service_container" type="HBoxContainer" parent="CanvasLayer" unique_id=1807949324]
+offset_left = 111.0
+offset_top = 312.0
+offset_right = 182.0
+offset_bottom = 352.0
+
+[node name="deathCertificate" parent="CanvasLayer/service_container" unique_id=1219739542 instance=ExtResource("1_pw63i")]
+layout_mode = 2
+text = "M"
+item = "service"
+value = "death"
+
+[node name="marriageCertificate" parent="CanvasLayer/service_container" unique_id=1679468344 instance=ExtResource("1_pw63i")]
+layout_mode = 2
+text = "C"
+item = "service"
+value = "marriage"
+
+[node name="inheritanceCertificate" parent="CanvasLayer/service_container" unique_id=2095929445 instance=ExtResource("1_pw63i")]
+layout_mode = 2
+text = "H"
+item = "service"
+value = "inheritance"
+
+[node name="curr_client" type="Label" parent="CanvasLayer" unique_id=1562261801]
+offset_left = 659.0
+offset_top = 207.0
+offset_right = 699.0
+offset_bottom = 230.0
+
+[node name="curr_state" type="Label" parent="CanvasLayer" unique_id=1256823983]
+offset_left = 568.0
+offset_top = 465.0
+offset_right = 608.0
+offset_bottom = 488.0
+
+[node name="lives_container" type="HBoxContainer" parent="CanvasLayer" unique_id=778038727]
+offset_left = 1042.0
+offset_top = 11.0
+offset_right = 1122.0
+offset_bottom = 91.0
+script = ExtResource("3_rt2n2")
+
+[node name="Label" type="Label" parent="CanvasLayer/lives_container" unique_id=1082850745]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "3"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/lives_container" unique_id=346005503]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_gubc5")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="queue_container" type="HBoxContainer" parent="CanvasLayer" unique_id=841522360]
+offset_left = 78.0
+offset_top = 100.0
+offset_right = 118.0
+offset_bottom = 140.0
+script = ExtResource("5_c16ls")
+
+[node name="Label" type="Label" parent="CanvasLayer/queue_container" unique_id=898531392]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "1/3"
+
+[node name="endOfTheDay" type="TextureRect" parent="CanvasLayer" unique_id=1726228544]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -200.0
+offset_right = 500.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_6wevv")
+script = ExtResource("6_18nlu")
+
+[node name="Label" type="Label" parent="CanvasLayer/endOfTheDay" unique_id=654765658]
+layout_mode = 0
+offset_left = 106.0
+offset_top = 4.0
+offset_right = 852.0
+offset_bottom = 284.0
+theme_override_font_sizes/font_size = 40
+text = "Parabéns!! 
+você pagou sua penitência"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="buttons_container" type="HBoxContainer" parent="CanvasLayer/endOfTheDay" unique_id=1839146056]
+layout_mode = 0
+offset_left = 759.0
+offset_top = 325.0
+offset_right = 959.0
+offset_bottom = 365.0
+
+[node name="quit_button" type="Button" parent="CanvasLayer/endOfTheDay/buttons_container" unique_id=770032178]
+layout_mode = 2
+text = "Fechar"
+
+[node name="next_day_button" type="Button" parent="CanvasLayer/endOfTheDay/buttons_container" unique_id=1883584992]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Próximo dia"
+
+[node name="gameOverPanel" type="TextureRect" parent="CanvasLayer" unique_id=1637963848]
+visible = false
+offset_left = 269.0
+offset_top = 121.0
+offset_right = 869.0
+offset_bottom = 563.0
+texture = SubResource("CanvasTexture_mngbo")
+script = ExtResource("7_e1cbu")
+
+[node name="Label" type="Label" parent="CanvasLayer/gameOverPanel" unique_id=1940132628]
+layout_mode = 0
+offset_left = 123.0
+offset_top = 80.0
+offset_right = 499.0
+offset_bottom = 135.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Você falhou demais"
+
+[node name="try_again_button" type="Button" parent="CanvasLayer/gameOverPanel" unique_id=1403925350]
+layout_mode = 0
+offset_left = 216.0
+offset_top = 327.0
+offset_right = 368.0
+offset_bottom = 358.0
+text = "Tentar novamente"
+
+[node name="PlayerController" parent="." unique_id=11431370 instance=ExtResource("1_w2twt")]
+DAYS = Array[ExtResource("11_mngbo")]([ExtResource("12_4w45t"), ExtResource("13_4w45t")])
+client_card_scene = ExtResource("12_mngbo")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2015713460]
+offset_right = 759.0
+offset_bottom = 127.0
+
+[node name="Paper" parent="." unique_id=54838569 instance=ExtResource("14_r6p65")]
+offset_left = 700.0
+offset_top = 586.0
+offset_right = 700.0
+offset_bottom = 586.0
+item_value = "hell"
+icon = ExtResource("14_01n6w")
+sprite_texture = ExtResource("14_01n6w")
+
+[node name="Service" parent="." unique_id=358545664 instance=ExtResource("14_r6p65")]
+offset_left = 650.0
+offset_top = 372.0
+offset_right = 650.0
+offset_bottom = 372.0
+item_type = 1
+item_value = "Inheritance"
+icon = ExtResource("15_6u1mn")
+sprite_texture = ExtResource("15_6u1mn")
+
+[node name="Service2" parent="." unique_id=2058960991 instance=ExtResource("14_r6p65")]
+offset_left = 524.0
+offset_top = 451.0
+offset_right = 524.0
+offset_bottom = 451.0
+item_type = 1
+item_value = "marriage"
+icon = ExtResource("16_bcnxi")
+sprite_texture = ExtResource("16_bcnxi")
+
+[node name="Paper2" parent="." unique_id=1913873533 instance=ExtResource("14_r6p65")]
+offset_left = 878.0
+offset_top = 586.0
+offset_right = 878.0
+offset_bottom = 586.0
+item_value = "paradise"
+icon = ExtResource("15_01n6w")
+sprite_texture = ExtResource("15_01n6w")
+
+[node name="Printer" parent="." unique_id=482215309 instance=ExtResource("14_si52b")]
+offset_left = 30.0
+offset_top = 463.0
+offset_right = 30.0
+offset_bottom = 463.0
+
+[node name="Panel" type="Panel" parent="." unique_id=785484300]
+offset_left = 395.0
+offset_top = 486.0
+offset_right = 689.0
+offset_bottom = 609.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_adb74")
+
+[node name="DragableSlot2" type="Control" parent="Panel" unique_id=762117792]
+anchors_preset = 0
+offset_left = 168.0
+offset_top = 14.0
+offset_right = 278.0
+offset_bottom = 114.0
+script = ExtResource("20_xdqt8")
+accepted_type = 2
+metadata/_custom_type_script = "uid://ckcei4s5rkpb8"
+
+[connection signal="button_down" from="CanvasLayer/stampButton" to="PlayerController" method="_on_stamp_button_button_down"]
+[connection signal="button_down" from="CanvasLayer/endOfTheDay/buttons_container/quit_button" to="CanvasLayer/endOfTheDay" method="_on_quit_button_button_down"]
+[connection signal="button_down" from="CanvasLayer/endOfTheDay/buttons_container/next_day_button" to="PlayerController" method="_on_next_day_button_button_down"]
+[connection signal="button_down" from="CanvasLayer/gameOverPanel/try_again_button" to="CanvasLayer/gameOverPanel" method="_on_try_again_button_button_down"]
+[connection signal="day_changed" from="PlayerController" to="CanvasLayer/endOfTheDay" method="_on_player_controller_day_changed"]
+[connection signal="day_ended" from="PlayerController" to="CanvasLayer/endOfTheDay" method="_on_player_controller_day_ended"]
+[connection signal="lives_changed" from="PlayerController" to="CanvasLayer/lives_container" method="_on_player_controller_lives_changed"]
+[connection signal="queue_changed" from="PlayerController" to="CanvasLayer/queue_container" method="_on_player_controller_queue_changed"]

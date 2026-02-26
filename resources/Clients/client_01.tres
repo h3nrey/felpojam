@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://ds13i6bkdrpg6" path="res://scripts/Client.gd" id="1_ejpdw"]
 [ext_resource type="Texture2D" uid="uid://cxqdqst85kk8i" path="res://assets/characters/mugman.webp" id="2_a2nq7"]
+[ext_resource type="Texture2D" uid="uid://bs15w53hutchf" path="res://assets/ui/icons/ring.png" id="2_vxs3p"]
+[ext_resource type="Texture2D" uid="uid://rqfflbi8qwm" path="res://assets/ui/icons/devil.png" id="4_7uldt"]
 
 [resource]
 script = ExtResource("1_ejpdw")
@@ -9,4 +11,7 @@ name = "Peterson"
 sprite_texture = ExtResource("2_a2nq7")
 type = "hell"
 service = "marriage"
+patience_duration = 90
+type_texture = ExtResource("4_7uldt")
+service_texture = ExtResource("2_vxs3p")
 metadata/_custom_type_script = "uid://ds13i6bkdrpg6"

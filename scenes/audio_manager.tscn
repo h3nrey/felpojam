@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bqgma8epw1dpj"]
+
+[ext_resource type="Script" uid="uid://cj4px1sfd4ny6" path="res://scripts/global/audio_manager.gd" id="1_audio"]
+[ext_resource type="AudioStream" uid="uid://6mgalw5tgfuy" path="res://audio/sfx/click.mp3" id="2_liach"]
+
+[node name="AudioManager" type="Node" unique_id=1604331409]
+script = ExtResource("1_audio")
+click_sound = ExtResource("2_liach")
