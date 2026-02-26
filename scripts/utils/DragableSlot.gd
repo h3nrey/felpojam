@@ -23,5 +23,7 @@ func _drop_data(_pos, data):
 			node.get_parent().remove_child(node)
 		add_child(node)
 		if node is Control:
+			node.set_anchors_preset(Control.PRESET_FULL_RECT)
 			node.position = Vector2.ZERO
+			node.size = size
 	item_dropped.emit(data.type, data.value)

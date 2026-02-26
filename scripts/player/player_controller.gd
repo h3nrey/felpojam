@@ -2,7 +2,7 @@ extends Node2D
 
 # SIGNALS
 signal lives_changed(curr_lives)
-signal queue_changed(curr_client_index: int, queue_size: int)
+signal queue_changed(queue_size: int)
 signal day_ended()
 signal game_winned()
 signal day_changed()
@@ -28,7 +28,7 @@ var curr_client_index = 0
 # NODES
 @onready var curr_state_text: Label = $"../CanvasLayer/curr_state"
 @onready var curr_client_text: Label = $"../CanvasLayer/curr_client"
-@onready var curr_client_sprite: Sprite2D = $"../Sprite2D"
+@onready var curr_client_sprite: Sprite2D = get_node_or_null("../Sprite2D")
 @onready var game_over_panel: TextureRect = $"../CanvasLayer/gameOverPanel"
 @onready var queue_container: HBoxContainer = $"../CanvasLayer/queue_container"
 
@@ -123,7 +123,8 @@ func setup_client():
 	
 	print(curr_client_text)
 	curr_client_text.text = "Name: " + curr_client.name + ",\n" + "Type: " + curr_client.type + ", \n" + "Service: " + curr_client.service
-	curr_client_sprite.texture = curr_client.sprite_texture
+	if curr_client_sprite:
+		curr_client_sprite.texture = curr_client.sprite_texture
 	
 func remove_client(client):
 	if not client_queue.has(client):
@@ -137,19 +138,17 @@ func remove_client(client):
 			break
 	
 	queue_changed.emit(client_queue.size())
-	
-#func make_client():
-	#var client = Client.new()
-	#client.name = "jorge"
-	#client.sprite_texture = CLIENT_SPRITES.pick_random()
-	#client.type = Types.CLIENT_TYPES.values().pick_random()
-	#client.service = Types.SERVICES.values().pick_random()
-	#return client
-	
+
 func select_client(client):
 	if selected_client == client:
 		selected_client = null
+		return
 	selected_client = client
+	
+	# Update UI to show selected client
+	curr_client_text.text = "Name: " + client.name + ",\n" + "Type: " + client.type + ", \n" + "Service: " + client.service
+	if curr_client_sprite:
+		curr_client_sprite.texture = client.sprite_texture
 
 func on_document_correct(client, _document):
 	correct_requests += 1
@@ -182,7 +181,7 @@ func on_client_timeout(client):
 	
 func handle_next_client():
 	curr_client_index += 1
-	queue_changed.emit(curr_client_index, client_queue.size())
+	queue_changed.emit(client_queue.size())
 	clear_curr_status()
 	
 	if curr_client_index >= client_queue.size():

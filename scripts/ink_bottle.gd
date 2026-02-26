@@ -102,14 +102,15 @@ func _can_drop_data(_pos, data):
 func _drop_data(_pos, data):
 	var stamp_node = data.get("node")
 	if stamp_node and stamp_node is StampItem:
+		stamp_node.mark_drop_successful()
 		start_inking(stamp_node)
 		print("Stamp started inking!")
 
 # Hover effects
 func _on_mouse_entered():
-	if hover_texture and texture_rect:
-		texture_rect.texture = hover_texture
+	if texture_rect:
+		texture_rect.modulate = Color(1.2, 1.2, 1.2, 1.0)  # Brighten
 
 func _on_mouse_exited():
-	if normal_texture and texture_rect:
-		texture_rect.texture = normal_texture
+	if texture_rect:
+		texture_rect.modulate = Color(1.0, 1.0, 1.0, 1.0)  # Normal

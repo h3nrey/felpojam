@@ -2,13 +2,27 @@
 
 [ext_resource type="Texture2D" uid="uid://ot636l6ixfhf" path="res://assets/printer.png" id="1_4lrxx"]
 [ext_resource type="Script" uid="uid://b5thejmg2eu4x" path="res://scripts/machines/printer_controller.gd" id="1_jf8il"]
-[ext_resource type="Texture2D" uid="uid://b5mywt4n40od7" path="res://assets/square.png" id="3_mu7cj"]
-[ext_resource type="Texture2D" uid="uid://spwlkf0yobtu" path="res://assets/ui/progress_bar/bellow.png" id="4_jyu6j"]
-[ext_resource type="Texture2D" uid="uid://w0r250hg4fj2" path="res://assets/ui/progress_bar/top.png" id="5_v3a1h"]
-[ext_resource type="Texture2D" uid="uid://bjdtrtenm4geh" path="res://assets/ui/progress_bar/progress.png" id="6_egoh1"]
-[ext_resource type="Texture2D" uid="uid://cvtvg122k5dj7" path="res://assets/ui/icons/check.png" id="7_v3a1h"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mu7cj"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_progress_bg"]
+bg_color = Color(0.3, 0.3, 0.3, 0.8)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_progress_fill"]
+bg_color = Color(0.95, 0.6, 0.2, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_slot"]
+bg_color = Color(0.4, 0.4, 0.4, 0.8)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
 
 [node name="Printer" type="Control" unique_id=482215309]
 layout_mode = 3
@@ -25,65 +39,104 @@ offset_bottom = 200.0
 texture = ExtResource("1_4lrxx")
 expand_mode = 1
 stretch_mode = 4
-flip_h = true
 
-[node name="Panel" type="Panel" parent="." unique_id=582560546]
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1736025125]
+visible = false
+z_index = 2
 layout_mode = 0
-offset_top = -50.0
-offset_right = 200.0
-offset_bottom = 50.0
+offset_left = -24.0
+offset_top = -6.0
+offset_right = 56.0
+offset_bottom = 9.0
+rotation = -0.388543
+theme_override_styles/background = SubResource("StyleBoxFlat_progress_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_progress_fill")
+max_value = 3.0
+show_percentage = false
 
-[node name="IconsContainer" type="HBoxContainer" parent="Panel" unique_id=1127420847]
+[node name="SlotsContainer" type="HBoxContainer" parent="." unique_id=152351076]
+z_index = 2
+layout_mode = 0
+offset_left = -42.0
+offset_top = -9.000002
+offset_right = 66.0
+offset_bottom = 25.999998
+rotation = -0.3963797
+theme_override_constants/separation = 8
+
+[node name="PaperSlot" type="Panel" parent="SlotsContainer" unique_id=1421824237]
+custom_minimum_size = Vector2(50, 35)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="PlusLabel" type="Label" parent="SlotsContainer/PaperSlot" unique_id=1211333045]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="SlotsContainer/PaperSlot" unique_id=781793165]
 visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 26.0
-offset_top = 6.0
-offset_right = -30.0
-offset_bottom = 23.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 16
+expand_mode = 1
+stretch_mode = 5
 
-[node name="PaperPanel" type="Panel" parent="Panel/IconsContainer" unique_id=1087606278]
+[node name="ServiceSlot" type="Panel" parent="SlotsContainer" unique_id=19828659]
+custom_minimum_size = Vector2(50, 35)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxTexture_mu7cj")
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
 
-[node name="icon" type="TextureRect" parent="Panel/IconsContainer/PaperPanel" unique_id=1561690728]
-layout_mode = 0
-offset_right = 64.0
-offset_bottom = 64.0
-texture = ExtResource("3_mu7cj")
+[node name="PlusLabel" type="Label" parent="SlotsContainer/ServiceSlot" unique_id=1565768907]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="ServicePanel" type="Panel" parent="Panel/IconsContainer" unique_id=1375027879]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="icon" type="TextureRect" parent="Panel/IconsContainer/ServicePanel" unique_id=324206371]
-layout_mode = 0
-offset_right = 64.0
-offset_bottom = 64.0
-texture = ExtResource("3_mu7cj")
-
-[node name="ProgressBar" type="TextureProgressBar" parent="Panel" unique_id=1537840309]
+[node name="Icon" type="TextureRect" parent="SlotsContainer/ServiceSlot" unique_id=591334471]
 visible = false
-layout_mode = 0
-offset_left = -1.9999999
-offset_top = 24.999998
-offset_right = 254.0
-offset_bottom = 89.0
-scale = Vector2(0.8, 0.8)
-texture_under = ExtResource("4_jyu6j")
-texture_over = ExtResource("5_v3a1h")
-texture_progress = ExtResource("6_egoh1")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
 
-[node name="markedIcon" type="TextureRect" parent="Panel" unique_id=1317513158]
-layout_mode = 0
-offset_left = 68.0
-offset_top = 19.0
-offset_right = 132.0
-offset_bottom = 83.0
-texture = ExtResource("7_v3a1h")
+[node name="DocumentSlot" type="Control" parent="." unique_id=1911184082]
+visible = false
+z_index = 2
+anchors_preset = 0
+offset_left = 160.0
+offset_top = -30.0
+offset_right = 220.0
+offset_bottom = 30.0

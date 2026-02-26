@@ -1,4 +1,4 @@
-extends VBoxContainer
+extends Control
 
 @export var debug = false
 
@@ -9,9 +9,12 @@ var patience_duration := 5
 var elapsed_time := 0.0
 @export var type_icons: Dictionary[String, Texture2D] = {}
 @export var service_icons: Dictionary[String, Texture2D] = {}
-@onready var progress_bar: TextureProgressBar = $progress_bar
-@onready var type_icon: TextureRect = $icons_container/icon_container/icon
-@onready var service_icon: TextureRect = $icons_container/icon_container2/icon
+@onready var progress_bar: ProgressBar = $MarginContainer/VBoxContainer/progress_bar
+@onready var document_preview: TextureRect = $MarginContainer/VBoxContainer/ContentContainer/DocumentPreview
+@onready var type_icon: TextureRect = $MarginContainer/VBoxContainer/ContentContainer/icons_container/type_icon
+@onready var service_icon: TextureRect = $MarginContainer/VBoxContainer/ContentContainer/icons_container/service_icon
+
+var progress_fill_style: StyleBoxFlat
 
 # Mapping for validation
 var paper_type_map = {
@@ -25,6 +28,13 @@ var service_type_map = {
 }
 
 func _ready() -> void:
+	# Make it clear this is clickable
+	mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+	
+	# Duplicate the fill style so we can modify color
+	progress_fill_style = progress_bar.get_theme_stylebox("fill").duplicate()
+	progress_bar.add_theme_stylebox_override("fill", progress_fill_style)
+	
 	if debug:
 		setup_card(patience_duration)
 	
@@ -41,6 +51,10 @@ func initialize(client):
 	patience_duration = client.patience_duration
 	initialized = true
 	
+	# Call setup_card here since _ready() already ran
+	if is_node_ready():
+		setup_card(patience_duration, client.type, client.service)
+	
 	
 func decrease_value(elapsed_time):
 	if not running:
@@ -50,7 +64,25 @@ func decrease_value(elapsed_time):
 		running = false
 		EventBus.on_client_wait_timeout.emit(client_reference)
 		return
+	
 	progress_bar.value = patience_duration - elapsed_time
+	update_progress_color()
+
+
+func update_progress_color():
+	var percent = progress_bar.value / progress_bar.max_value
+	var color: Color
+	
+	if percent > 0.5:
+		# Green to Yellow (1.0 -> 0.5)
+		var t = (percent - 0.5) / 0.5
+		color = Color(0.4, 0.75, 0.45).lerp(Color(0.95, 0.85, 0.3), 1.0 - t)
+	else:
+		# Yellow to Red (0.5 -> 0.0)
+		var t = percent / 0.5
+		color = Color(0.95, 0.85, 0.3).lerp(Color(0.85, 0.3, 0.3), 1.0 - t)
+	
+	progress_fill_style.bg_color = color
 	
 func setup_card(duration: int, type = null, service = null):
 	patience_duration = duration
@@ -62,14 +94,20 @@ func setup_card(duration: int, type = null, service = null):
 	if type && service:
 		type_icon.texture = type_icons.get(type)
 		service_icon.texture = service_icons.get(service)
+		# Set document preview
+		var doc_texture = DocumentDatabase.get_texture_by_strings(type, service)
+		if doc_texture:
+			document_preview.texture = doc_texture
 	running = true
 
 func _gui_input(event):
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+			print("Card clicked for client: ", client_reference.name)
+			accept_event()
 			EventBus.sfx_click.emit()
 			EventBus.on_client_selected.emit(client_reference)
-			print("selecting client", client_reference.type)
+			print("selecting client: ", client_reference.type, " - ", client_reference.service)
 
 func _can_drop_data(_pos, data):
 	if typeof(data) != TYPE_DICTIONARY:

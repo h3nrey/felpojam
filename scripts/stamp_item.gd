@@ -11,6 +11,11 @@ enum StampState { EMPTY, INKING, READY }
 
 var state: StampState = StampState.EMPTY
 
+var original_parent: Node = null
+var original_position: Vector2 = Vector2.ZERO
+var is_dragging := false
+var drop_successful := false
+
 func _ready():
 	item_type = ItemType.STAMP
 	item_value = service_type
@@ -56,6 +61,12 @@ func _get_drag_data(_pos):
 	if state == StampState.INKING:
 		return null
 	
+	# Store original position for snap-back
+	original_parent = get_parent()
+	original_position = position
+	is_dragging = true
+	drop_successful = false
+	
 	var data = super._get_drag_data(_pos)
 	data["stamp_state"] = state
 	data["service_type"] = service_type
@@ -66,11 +77,36 @@ func _get_drag_data(_pos):
 	
 	return data
 
-# Hover effects
+func mark_drop_successful():
+	drop_successful = true
+
+func _notification(what):
+	super._notification(what)
+	if what == NOTIFICATION_DRAG_END:
+		if is_dragging and not drop_successful:
+			# Return to original position and reset state
+			return_to_origin()
+		is_dragging = false
+
+func return_to_origin():
+	if original_parent and is_instance_valid(original_parent):
+		# Remove from current parent if different
+		if get_parent() and get_parent() != original_parent:
+			get_parent().remove_child(self)
+			original_parent.add_child(self)
+		
+		position = original_position
+		
+		# Reset stamp to empty state when returned
+		if state == StampState.READY:
+			state = StampState.EMPTY
+			update_visual()
+			print("Stamp returned - ink cleared")
+
 func _on_mouse_entered():
-	if hover_texture and sprite:
-		sprite.texture = hover_texture
+	if sprite:
+		sprite.modulate = Color(1.2, 1.2, 1.2, 1.0)  # Brighten
 
 func _on_mouse_exited():
-	if normal_texture and sprite:
-		sprite.texture = normal_texture
+	if sprite:
+		sprite.modulate = Color(1.0, 1.0, 1.0, 1.0)  # Normal

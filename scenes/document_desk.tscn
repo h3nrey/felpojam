@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://cmm06n7j7y10d"]
+
+[ext_resource type="Texture2D" uid="uid://dmlt5ufiuf68h" path="res://assets/paper_slot.png" id="1_l1vpy"]
+[ext_resource type="Script" uid="uid://ckcei4s5rkpb8" path="res://scripts/utils/DragableSlot.gd" id="1_slot"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_slot"]
+
+[node name="DocumentDesk" type="Control" unique_id=1449318544]
+custom_minimum_size = Vector2(400, 120)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 400.0
+offset_bottom = 133.0
+
+[node name="Background" type="TextureRect" parent="." unique_id=998409074]
+layout_mode = 0
+offset_right = 314.0
+offset_bottom = 134.0
+texture = ExtResource("1_l1vpy")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=172628668]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -3.5
+offset_right = -82.0
+offset_bottom = 3.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="SlotsContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1550377302]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="DocumentSlot1" type="Panel" parent="MarginContainer/SlotsContainer" unique_id=1141251469]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_slot")
+script = ExtResource("1_slot")
+accepted_type = 2
+
+[node name="DocumentSlot2" type="Panel" parent="MarginContainer/SlotsContainer" unique_id=1315242772]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_slot")
+script = ExtResource("1_slot")
+accepted_type = 2

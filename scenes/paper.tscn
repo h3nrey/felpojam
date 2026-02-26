@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dimhs6ikqifa6"]
 
 [ext_resource type="Script" uid="uid://n2ywri7e5coa" path="res://scripts/utils/DragableItem.gd" id="1_ldlei"]
-[ext_resource type="Texture2D" uid="uid://c7cqju1emdyl" path="res://assets/paper.png" id="2_vas6c"]
+[ext_resource type="Texture2D" uid="uid://clyic1vf3i3x5" path="res://assets/paper_angel.png" id="2_vas6c"]
 
 [node name="Paper" type="Control" unique_id=54838569]
 layout_mode = 3

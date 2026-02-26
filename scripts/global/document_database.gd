@@ -25,3 +25,15 @@ func get_texture(doc: Document) -> Texture2D:
 				Types.ServiceType.INHERITANCE: return paradise_inheritance
 	
 	return null
+
+
+func get_texture_by_strings(paper_type: String, service_type: String) -> Texture2D:
+	var key = paper_type + "_" + service_type
+	match key:
+		"hell_death": return hell_death
+		"hell_marriage": return hell_marriage
+		"hell_inheritance": return hell_inheritance
+		"paradise_death": return paradise_death
+		"paradise_marriage": return paradise_marriage
+		"paradise_inheritance": return paradise_inheritance
+	return null

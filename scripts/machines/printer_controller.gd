@@ -9,27 +9,41 @@ var is_printing := false
 var is_finished := false
 var is_dragging_document := false
 
-var current_paper: Types.PaperType = -1
-var current_service: Types.ServiceType = -1
+var current_paper: Types.PaperType = -1 as Types.PaperType
+var current_service: Types.ServiceType = -1 as Types.ServiceType
 
 @export var print_time := 3.0
 var elapsed_time := 0.0
 @export var document_scene: PackedScene
 
+# Style resources (loaded from scene)
+var style_slot_default: StyleBoxFlat
+var style_slot_filled: StyleBoxFlat
+
 # Nodes
-@onready var panel: Panel = $Panel
-@onready var paper_icon: TextureRect = $Panel/IconsContainer/PaperPanel/icon
-@onready var service_icon: TextureRect = $Panel/IconsContainer/ServicePanel/icon
-@onready var progress_bar: TextureProgressBar = $Panel/ProgressBar
-@onready var completed_icon: TextureRect = $Panel/markedIcon
-@onready var icons_container: HBoxContainer = $Panel/IconsContainer
+@onready var progress_bar: ProgressBar = $ProgressBar
+
+@onready var slots_container: HBoxContainer = $SlotsContainer
+@onready var paper_slot: Panel = $SlotsContainer/PaperSlot
+@onready var paper_plus: Label = $SlotsContainer/PaperSlot/PlusLabel
+@onready var paper_icon: TextureRect = $SlotsContainer/PaperSlot/Icon
+@onready var service_slot: Panel = $SlotsContainer/ServiceSlot
+@onready var service_plus: Label = $SlotsContainer/ServiceSlot/PlusLabel
+@onready var service_icon: TextureRect = $SlotsContainer/ServiceSlot/Icon
+
+@onready var document_slot: Control = $DocumentSlot
 
 
 func _ready():
-	panel.visible = false
+	# Store style references
+	style_slot_default = paper_slot.get_theme_stylebox("panel").duplicate()
+	style_slot_filled = style_slot_default.duplicate()
+	style_slot_filled.bg_color = Color(0.3, 0.6, 0.3, 0.9)
+	
 	progress_bar.visible = false
-	completed_icon.visible = false
-	icons_container.visible = true
+	progress_bar.max_value = print_time
+	
+	update_visual_state()
 
 
 func _process(delta):
@@ -37,7 +51,7 @@ func _process(delta):
 		return
 	
 	elapsed_time += delta
-	progress_bar.value = print_time - elapsed_time
+	progress_bar.value = elapsed_time
 	
 	if elapsed_time >= print_time:
 		finish_printing()
@@ -56,16 +70,18 @@ func _can_drop_data(_pos, data):
 
 
 func _drop_data(_pos, data):
-	panel.visible = true
-	
 	match data["type"]:
 		DraggableItem.ItemType.PAPER:
 			current_paper = data["value"]
 			paper_icon.texture = data["icon"]
+			paper_icon.visible = true
+			paper_plus.visible = false
 		
 		DraggableItem.ItemType.SERVICE:
 			current_service = data["value"]
 			service_icon.texture = data["icon"]
+			service_icon.visible = true
+			service_plus.visible = false
 	
 	check_start_print()
 	update_visual_state()
@@ -85,9 +101,8 @@ func start_printing():
 	is_finished = false
 	
 	elapsed_time = 0.0
-	
+	progress_bar.value = 0.0
 	progress_bar.max_value = print_time
-	progress_bar.value = print_time
 	
 	update_visual_state()
 
@@ -103,32 +118,28 @@ func finish_printing():
 func create_document():
 	generated_document = Document.new(current_paper, current_service)
 
-	completed_icon.texture = DocumentDatabase.get_texture(generated_document)
-
 	if document_scene:
 		printed_item = document_scene.instantiate()
 		printed_item.setup(generated_document)
 		printed_item.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-		add_child(printed_item)
+		document_slot.add_child(printed_item)
+
 
 # =============================
 # Drag TO COLLECT
 # =============================
 
 func collect_document():
-	print("collecting not ready")
 	if not printed_item:
 		return
-		
-	print("collecting readed")
 	
-	# Move o mesmo item para fora da impressora
 	remove_child(printed_item)
 	get_parent().add_child(printed_item)
 	
 	document_printed.emit(generated_document)
 	reset_printer()
-	
+
+
 func _get_drag_data(_pos: Vector2):
 	if not is_finished or generated_document == null:
 		return null
@@ -161,6 +172,7 @@ func _get_drag_data(_pos: Vector2):
 	is_dragging_document = true
 	return data
 
+
 func _notification(what):
 	if what == NOTIFICATION_DRAG_END:
 		if has_node("/root/DragLayer"):
@@ -174,17 +186,13 @@ func _notification(what):
 					document_printed.emit(generated_document)
 					reset_printer()
 
-func on_document_taken(doc_item: DocumentItem):
 
-	print("document taken", doc_item)
-
+func on_document_taken(_doc_item: DocumentItem):
 	printed_item = null
 	generated_document = null
-	
 	is_finished = false
-	panel.visible = false
 	
-	update_visual_state()
+	reset_printer()
 
 
 # =============================
@@ -192,20 +200,23 @@ func on_document_taken(doc_item: DocumentItem):
 # =============================
 
 func reset_printer():
-	current_paper = -1
-	current_service = -1
+	current_paper = -1 as Types.PaperType
+	current_service = -1 as Types.ServiceType
 	
 	paper_icon.texture = null
+	paper_icon.visible = false
+	paper_plus.visible = true
+	
 	service_icon.texture = null
+	service_icon.visible = false
+	service_plus.visible = true
 	
 	generated_document = null
 	printed_item = null
-	completed_icon.texture = null
 	
 	is_printing = false
 	is_finished = false
 	
-	panel.visible = false
 	update_visual_state()
 
 
@@ -214,6 +225,33 @@ func reset_printer():
 # =============================
 
 func update_visual_state():
-	icons_container.visible = not is_printing and not is_finished
+	var has_paper = current_paper != -1
+	var has_service = current_service != -1
+	
+	# Slots container - always visible except when finished
+	slots_container.visible = not is_finished
+	
+	# Update slot styles and visibility based on filled state
+	if has_paper:
+		paper_slot.add_theme_stylebox_override("panel", style_slot_filled)
+		paper_plus.visible = false
+		paper_icon.visible = true
+	else:
+		paper_slot.add_theme_stylebox_override("panel", style_slot_default)
+		paper_plus.visible = true
+		paper_icon.visible = false
+	
+	if has_service:
+		service_slot.add_theme_stylebox_override("panel", style_slot_filled)
+		service_plus.visible = false
+		service_icon.visible = true
+	else:
+		service_slot.add_theme_stylebox_override("panel", style_slot_default)
+		service_plus.visible = true
+		service_icon.visible = false
+	
+	# Progress bar - only visible during printing
 	progress_bar.visible = is_printing
-	completed_icon.visible = is_finished
+	
+	# Document slot - visible when finished
+	document_slot.visible = is_finished

@@ -1,18 +1,34 @@
 [gd_scene format=3 uid="uid://dpag4livtkm45"]
 
-[ext_resource type="Texture2D" uid="uid://spwlkf0yobtu" path="res://assets/ui/progress_bar/bellow.png" id="1_ch7fc"]
 [ext_resource type="Script" uid="uid://cpg6gst681j0y" path="res://scripts/client_card_ui_controller.gd" id="1_t5n7w"]
 [ext_resource type="Texture2D" uid="uid://rqfflbi8qwm" path="res://assets/ui/icons/devil.png" id="2_iru01"]
-[ext_resource type="Texture2D" uid="uid://w0r250hg4fj2" path="res://assets/ui/progress_bar/top.png" id="2_t5n7w"]
-[ext_resource type="Texture2D" uid="uid://bjdtrtenm4geh" path="res://assets/ui/progress_bar/progress.png" id="3_8xvxy"]
 [ext_resource type="Texture2D" uid="uid://5ra2v30n3ube" path="res://assets/ui/icons/money.png" id="3_vkgx5"]
-[ext_resource type="Texture2D" uid="uid://b5mywt4n40od7" path="res://assets/square.png" id="4_iru01"]
 [ext_resource type="Texture2D" uid="uid://bjulun4x88ktj" path="res://assets/ui/icons/angel.png" id="5_vkgx5"]
 [ext_resource type="Texture2D" uid="uid://bs15w53hutchf" path="res://assets/ui/icons/ring.png" id="6_l8sc5"]
 [ext_resource type="Texture2D" uid="uid://bcy7jcp42h2hi" path="res://assets/ui/icons/skull.png" id="6_vkgx5"]
+[ext_resource type="Texture2D" uid="uid://qvosn52myxrr" path="res://assets/ui/client_card.png" id="7_card_bg"]
+[ext_resource type="Texture2D" uid="uid://cnour076qghf5" path="res://assets/ui/icons/documents/paradise_marriage.png" id="8_doc_preview"]
 
-[node name="SceneCard" type="VBoxContainer" unique_id=1870070890]
-size_flags_horizontal = 3
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_progress_under"]
+bg_color = Color(0.25, 0.25, 0.25, 0.8)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_progress_fill"]
+bg_color = Color(0.4, 0.75, 0.45, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="SceneCard" type="Control" unique_id=1870070890]
+custom_minimum_size = Vector2(150, 90)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 150.0
+offset_bottom = 90.0
 script = ExtResource("1_t5n7w")
 type_icons = Dictionary[String, Texture2D]({
 "hell": ExtResource("2_iru01"),
@@ -24,34 +40,86 @@ service_icons = Dictionary[String, Texture2D]({
 "marriage": ExtResource("6_l8sc5")
 })
 
-[node name="progress_bar" type="TextureProgressBar" parent="." unique_id=2012208705]
-layout_mode = 2
-max_value = 0.0
-texture_under = ExtResource("1_ch7fc")
-texture_over = ExtResource("2_t5n7w")
-texture_progress = ExtResource("3_8xvxy")
+[node name="Background" type="TextureRect" parent="." unique_id=2043660734]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("7_card_bg")
+expand_mode = 1
+stretch_mode = 6
 
-[node name="icons_container" type="HBoxContainer" parent="." unique_id=1267020967]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2029921051]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1057703991]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 16
+
+[node name="progress_bar" type="ProgressBar" parent="MarginContainer/VBoxContainer" unique_id=2012208705]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_progress_under")
+theme_override_styles/fill = SubResource("StyleBoxFlat_progress_fill")
+max_value = 5.0
+value = 5.0
+show_percentage = false
+
+[node name="ContentContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1478902592]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/separation = 8
 
-[node name="icon_container" type="TextureRect" parent="icons_container" unique_id=57999043]
+[node name="DocumentPreview" type="TextureRect" parent="MarginContainer/VBoxContainer/ContentContainer" unique_id=1234567890]
+custom_minimum_size = Vector2(56, 28)
 layout_mode = 2
 size_flags_horizontal = 0
-texture = ExtResource("4_iru01")
+size_flags_stretch_ratio = 0.0
+mouse_filter = 2
+texture = ExtResource("8_doc_preview")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="icon" type="TextureRect" parent="icons_container/icon_container" unique_id=517078669]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("5_vkgx5")
-
-[node name="icon_container2" type="TextureRect" parent="icons_container" unique_id=1678543695]
+[node name="icons_container" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ContentContainer" unique_id=1267020967]
 layout_mode = 2
-texture = ExtResource("4_iru01")
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 6
+alignment = 1
 
-[node name="icon" type="TextureRect" parent="icons_container/icon_container2" unique_id=1932876544]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="type_icon" type="TextureRect" parent="MarginContainer/VBoxContainer/ContentContainer/icons_container" unique_id=57999043]
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+texture = ExtResource("5_vkgx5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="service_icon" type="TextureRect" parent="MarginContainer/VBoxContainer/ContentContainer/icons_container" unique_id=1678543695]
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
 texture = ExtResource("6_l8sc5")
+expand_mode = 1
+stretch_mode = 5
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
